@@ -15,7 +15,7 @@ const connectDB = async () => {
     }
     try {
         await mongoose.connect(MONGO_URL!, {
-            dbName: "myPassengerApp",
+            dbName: "passengersApp",
             bufferCommands: true
         })
         console.log("Connected to database")

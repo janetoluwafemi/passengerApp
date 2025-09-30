@@ -11,7 +11,7 @@ export const POST = async (request: Request) => {
     try {
         const body: passengerRequest = await request.json()
         await connect()
-        const passenger = await Passenger.find({})
+        const passenger = await Passenger.findOne({ email: body.email });
         if (passenger) {
             return new NextResponse(JSON.stringify({
                 message: "Passenger already exists",
