@@ -1,6 +1,5 @@
 "use client"
 import {useEffect, useState} from "react"
-import AllRoutes from "@/app/all-routes/page"
 import {useRouter} from "next/navigation"
 
 
