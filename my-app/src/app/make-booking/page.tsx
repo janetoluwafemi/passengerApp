@@ -1,12 +1,18 @@
 "use client"
 import useRouter from "next/router"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
-const routeId = sessionStorage.getItem('_id')
-console.log(routeId)
 
 const MakeBooking = () => {
+    const [routeId, setRouteId] = useState<string | null>(null)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const routeId = sessionStorage.getItem('_id')
+            setRouteId(routeId)
+            console.log(routeId)
+        }
+    }, []);
     const router = useRouter
     const [formData, setFormData] = useState({
         passengerName: '',
