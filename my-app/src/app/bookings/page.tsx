@@ -17,7 +17,7 @@ const MakeBooking = () => {
     useEffect(() => {
         async function getAllBookings() {
             try {
-                const response = await fetch('http://localhost:3000/api/auth/bookings', {
+                const response = await fetch('/api/auth/bookings', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

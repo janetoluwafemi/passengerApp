@@ -44,7 +44,7 @@ const CreateRoute = () => {
                 alert("Please fill in all required fields: origin, destination, and available seats.")
                 return
             }
-            const response = await fetch('http://localhost:3000/api/auth/route', {
+            const response = await fetch('/api/auth/route', {
                 body: JSON.stringify(formData),
                 method: 'POST',
                 headers: {'content-type': 'application/json'

@@ -20,7 +20,7 @@ const ShowRoutes = () => {
     useEffect(() => {
         async function getAllRoutes() {
             try {
-                const response = await fetch('http://localhost:3000/api/auth/route',{
+                const response = await fetch('/api/auth/route',{
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

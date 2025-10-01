@@ -20,7 +20,7 @@ const MakeBooking = () => {
     })
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/bookings', {
+            const response = await fetch('/api/auth/bookings', {
                 body: JSON.stringify(formData),
                 method: 'POST',
                 headers: {
