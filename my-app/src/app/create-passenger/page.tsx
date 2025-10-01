@@ -1,17 +1,18 @@
 "use client"
 import useRouter from "next/router"
+import {useState} from "react";
 
-const FormData = {
-    passengerName: '',
-    email: ''
-}
 
 const CreatePassenger = () => {
     const router = useRouter
+    const [formData, setFormData] = useState({
+        passengerName: '',
+        email: ''
+    })
     const handleSubmit = async () => {
         try {
             const response = await fetch('/api/auth/passenger', {
-                body: JSON.stringify(FormData),
+                body: JSON.stringify(formData),
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'
                 }
@@ -29,12 +30,27 @@ const CreatePassenger = () => {
                 <div className="">
                     <label>Passenger Name: </label>
                     <input type="text" placeholder="Passenger Name" required={ true } className="border border-white"
-                           onInvalid={() => console.log("Passenger Name Is Required")} ></input>
+                           onInvalid={() => console.log("Passenger Name Is Required")}
+                           value={formData.passengerName}
+                           onChange={(e) => {
+                               setFormData((prevState) => ({
+                                   ...prevState,
+                                   passengerName: e.target.value
+                               }))
+                           }}
+                    ></input>
                 </div>
                 <div className="">
                     <label>Email: </label>
                     <input type="email" placeholder="Email" required={ true } className="border border-white"
                            onInvalid={() => console.log("Email Is Required")}
+                           value={formData.email}
+                           onChange={(e) => {
+                               setFormData((prevState) => ({
+                                   ...prevState,
+                                   email: e.target.value
+                               }))
+                           }}
                     />
                 </div>
                 <div className="flex justify-center text-center flex-row gap-3">
