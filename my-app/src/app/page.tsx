@@ -17,6 +17,9 @@ export default function Home() {
                 <button className="px-4 py-2 bg-blue-900 text-white rounded" onClick={() => router.push('/routes')}>
                     Create A Route
                 </button>
+                <button className="px-4 py-2 bg-blue-900 text-white rounded" onClick={() => router.push('/bookings')}>
+                    View All Bookings
+                </button>
             </div>
         </header>
         <main className="flex-1 flex flex-col items-center justify-center px-6 text-center">

@@ -1,15 +1,16 @@
 "use client"
-import useRouter from "next/router"
-import {useState} from "react";
+import {useRouter} from "next/navigation"
+import React, {useState} from "react";
 
 
 const CreatePassenger = () => {
-    const router = useRouter
+    const router = useRouter()
     const [formData, setFormData] = useState({
         passengerName: '',
         email: ''
     })
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
             const response = await fetch('/api/auth/passenger', {
                 body: JSON.stringify(formData),
@@ -19,6 +20,7 @@ const CreatePassenger = () => {
             })
             const responseJson = await response.json()
             alert(responseJson.message)
+            router.push('/showRoutes')
         } catch (error) {
             console.log(error)
         }
@@ -55,7 +57,7 @@ const CreatePassenger = () => {
                 </div>
                 <div className="flex justify-center text-center flex-row gap-3">
                     <div className="bg-amber-100 w-1/3">
-                        <button onClick={router.back} className="text-black">Back</button>
+                        <button className="text-black">Back</button>
                     </div>
                     <div className="bg-white w-1/3">
                         <button type="submit" className="text-black">Submit</button>

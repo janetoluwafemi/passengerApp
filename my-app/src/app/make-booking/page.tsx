@@ -1,32 +1,34 @@
 "use client"
-import useRouter from "next/router"
-import {useEffect, useState} from "react";
-
-
+import {useRouter} from "next/navigation"
+import React, {useEffect, useState} from "react";
 
 const MakeBooking = () => {
-    const [routeId, setRouteId] = useState<string | null>(null)
+    const router = useRouter()
+    const [theRouteId, setTheRouteId] = useState<string | null>(null)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const routeId = sessionStorage.getItem('_id')
-            setRouteId(routeId)
+            setTheRouteId(routeId)
             console.log(routeId)
         }
     }, []);
-    const router = useRouter
-    const [formData, setFormData] = useState({
-        passengerName: '',
-        routeId: routeId
-    })
-    const handleSubmit = async () => {
+    const [formData, setFormData] = useState({passengerName: ''})
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
+            const allFormData = {...formData, routeId: theRouteId}
             const response = await fetch('/api/auth/bookings', {
-                body: JSON.stringify(formData),
+                body: JSON.stringify(allFormData),
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
+            if (theRouteId) {
+                console.log(`RouteId inside formData: ${theRouteId}`);
+            } else {
+                console.log(`RouteId is null`);
+            }
             const data = await response.json()
             console.log(data.message)
             alert(data.message)
@@ -54,7 +56,7 @@ const MakeBooking = () => {
                 </div>
                 <div className="flex justify-center text-center flex-row gap-3">
                     <div className="bg-amber-100 w-1/3">
-                        <button onClick={() => router.back()} className="text-black">Back</button>
+                        <button className="text-black" onClick={() => router.back()}>Back</button>
                     </div>
                     <div className="bg-white w-1/3">
                         <button type="submit" className="text-black">Submit</button>

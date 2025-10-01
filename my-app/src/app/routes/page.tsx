@@ -1,9 +1,10 @@
 "use client"
-import useRouter from "next/router"
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react"
+import {useRouter} from "next/navigation"
+
 
 const CreateRoute = () => {
-    const router = useRouter
+    const router = useRouter()
     const [formattedDate, setFormattedDate] = useState('')
     const [formData, setFormData] = useState(
         {
@@ -38,7 +39,8 @@ const CreateRoute = () => {
         console.log(formatted)
         formData.departureTime = formatted
     }
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
             if (!formData.origin || !formData.destination || !formData.availableSeats) {
                 alert("Please fill in all required fields: origin, destination, and available seats.")
@@ -101,7 +103,7 @@ const CreateRoute = () => {
                 </div>
                 <div className="flex justify-center text-center flex-row gap-3">
                     <div className="bg-amber-100 w-1/3">
-                        <button onClick={router.back} className="text-black">Back</button>
+                        <button className="text-black" onClick={() => router.back()}>Back</button>
                     </div>
                     <div className="bg-white w-1/3">
                         <button type="submit" className="text-black">Submit</button>

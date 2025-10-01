@@ -46,11 +46,11 @@ const MakeBooking = () => {
                             <p>Booking ID: <strong>{booking.id}</strong></p>
                             <p>Passenger Name: <strong>{booking.passengerName}</strong></p>
                             <p>
-                                Route: <p>Route ID<strong>{booking.route._id}</strong></p>
-                                <p>Origin<strong>{booking.route.origin}</strong></p>
-                                <p>Destination<strong>{booking.route.destination}</strong></p>
-                                <p>Departure Time<strong>{booking.route.departureTime}</strong></p>
-                                <p>Available Seats<strong>{booking.route.availableSeats}</strong></p>
+                                Route: <p>Route ID: <strong>{booking.route._id}</strong></p>
+                                <p>Origin: <strong>{booking.route.origin}</strong></p>
+                                <p>Destination: <strong>{booking.route.destination}</strong></p>
+                                <p>Departure Time: <strong>{booking.route.departureTime}</strong></p>
+                                <p>Available Seats: <strong>{booking.route.availableSeats}</strong></p>
                             </p>
 
                         </li>
