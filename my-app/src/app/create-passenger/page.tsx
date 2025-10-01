@@ -13,7 +13,8 @@ const CreatePassenger = () => {
             const response = await fetch('http://localhost:3000/api/auth/passenger', {
                 body: JSON.stringify(FormData),
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json'
+                }
             })
             const responseJson = await response.json()
             alert(responseJson.message)

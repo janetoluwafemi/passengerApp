@@ -20,20 +20,41 @@ export const POST = async (request: Request) => {
             return new NextResponse(JSON.stringify({
                 message: "Passenger successfully booked a seat",
                 booking,
-            }))
+            }),{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                }
+            })
         }
         else {
             return new NextResponse(JSON.stringify({
                 message: "Passenger doesn't exist",
-            }))
+            }),{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                }
+            })
         }
     }
     catch (error) {
         console.log(error, "Error Trying To Create Booking")
         return new NextResponse(JSON.stringify({
             message: "Error Trying To Create bookings",
-            status: 500
-        }))
+        }),{
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            }
+        })
     }
 }
 
@@ -53,15 +74,29 @@ export const GET = async () => {
             })
         )
         return new NextResponse(JSON.stringify({
-            allBookings,
-            status: 200
-        }))
+            allBookings
+        }),{
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            }
+        })
     }
     catch (error) {
         console.log(error, "Error Trying To Get Bookings")
         return new NextResponse(JSON.stringify({
             message: "Error Trying To Get Bookings",
-            status: 500
-        }))
+        }),{
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            }
+        })
     }
 }

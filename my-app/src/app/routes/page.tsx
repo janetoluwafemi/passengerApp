@@ -47,7 +47,8 @@ const CreateRoute = () => {
             const response = await fetch('http://localhost:3000/api/auth/route', {
                 body: JSON.stringify(formData),
                 method: 'POST',
-                headers: {'content-type': 'application/json'}
+                headers: {'content-type': 'application/json'
+                }
             })
             console.log(formData.departureTime)
             const responseJson = await response.json()

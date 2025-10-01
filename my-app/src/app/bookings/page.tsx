@@ -21,7 +21,7 @@ const MakeBooking = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
-                    },
+                    }
                 })
                 const booking = await response.json()
                 setBookings(booking.allBookings)
