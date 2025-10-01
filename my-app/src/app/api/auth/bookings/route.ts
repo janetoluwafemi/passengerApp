@@ -23,7 +23,7 @@ export const POST = async (request: Request) => {
             }),{
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app',
                     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                 }
@@ -35,7 +35,7 @@ export const POST = async (request: Request) => {
             }),{
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                    'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app',
                     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
                 }
@@ -50,7 +50,7 @@ export const POST = async (request: Request) => {
             status: 500,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app',
                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
             }
@@ -79,7 +79,7 @@ export const GET = async () => {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app',
                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
             }
@@ -93,7 +93,7 @@ export const GET = async () => {
             status: 500,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app/',
+                'Access-Control-Allow-Origin': 'https://passenger-app-jmnj.vercel.app',
                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
             }
