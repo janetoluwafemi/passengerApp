@@ -70,7 +70,8 @@ export const GET = async () => {
         const bookings = await Booking.find({})
         const allBookings = await Promise.all(
             bookings.map(async (booking) => {
-                const routes = await Route.findById(booking.routeId)
+                const routeIdTrimmed = booking.routeId.trim();
+                const routes = await Route.findById(routeIdTrimmed);
                 return {
                     ...booking.Object,
                     passengerName: booking.passengerName,

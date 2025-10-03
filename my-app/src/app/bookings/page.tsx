@@ -52,7 +52,6 @@ const MakeBooking = () => {
                                 <p>Departure Time: <strong>{booking.route.departureTime}</strong></p>
                                 <p>Available Seats: <strong>{booking.route.availableSeats}</strong></p>
                             </p>
-
                         </li>
                     ))}
                 </div>
