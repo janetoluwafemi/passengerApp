@@ -22,20 +22,24 @@ export const POST = async (request: Request) => {
                 console.log(routeId)
                 const findAvailableSeats = await Route.findById(routeId)
                 console.log(findAvailableSeats)
-                const availableSeats = findAvailableSeats.availableSeats
+                let availableSeats = findAvailableSeats.availableSeats
                 console.log(availableSeats)
-                const intAvailableSeats = parseInt(availableSeats)
+                const intAvailableSeats = Number(availableSeats)
                 console.log(intAvailableSeats)
                 const remainingAvailableSeats = intAvailableSeats - 1
                 const stringRemainingAvailableSeats = remainingAvailableSeats.toString()
-                if(stringRemainingAvailableSeats === "0"){
+                console.log(stringRemainingAvailableSeats)
+                availableSeats = stringRemainingAvailableSeats
+                await routeId.save()
+                await booking.save()
+                if(availableSeats === "0"){
                     return new NextResponse(JSON.stringify({
                         message: "No available seats left"
                     }))
                 }
-                await booking.save()
                 return new NextResponse(JSON.stringify({
                     message: "Passenger successfully booked a seat",
+                    availableSeats: availableSeats,
                     booking
                 }))
             }
