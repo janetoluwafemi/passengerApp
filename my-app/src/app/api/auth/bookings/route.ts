@@ -39,7 +39,7 @@ export const POST = async (request: Request) => {
                     }))
                 }
                 return new NextResponse(JSON.stringify({
-                    message: "Passenger successfully booked a seat",
+                    message: "Passenger successfully booked a seat, with " + availableSeats + " seats left",
                     availableSeats: availableSeats,
                     booking
                 }))
