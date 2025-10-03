@@ -30,13 +30,13 @@ export const POST = async (request: Request) => {
                 const stringRemainingAvailableSeats = remainingAvailableSeats.toString()
                 if(stringRemainingAvailableSeats === "0"){
                     return new NextResponse(JSON.stringify({
-                        message: "No available seats left",
+                        message: "No available seats left"
                     }))
                 }
                 await booking.save()
                 return new NextResponse(JSON.stringify({
                     message: "Passenger successfully booked a seat",
-                    booking,
+                    booking
                 }))
             }
             else {
