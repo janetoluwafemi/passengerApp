@@ -45,13 +45,17 @@ const MakeBooking = () => {
                         <li key={booking.id}>
                             <p>Booking ID: <strong>{booking.id}</strong></p>
                             <p>Passenger Name: <strong>{booking.passengerName}</strong></p>
-                            <p>
-                                Route: <p>Route ID: <strong>{booking.route._id}</strong></p>
-                                <p>Origin: <strong>{booking.route.origin}</strong></p>
-                                <p>Destination: <strong>{booking.route.destination}</strong></p>
-                                <p>Departure Time: <strong>{booking.route.departureTime}</strong></p>
-                                <p>Available Seats: <strong>{booking.route.availableSeats}</strong></p>
-                            </p>
+                            {booking.route ? (
+                                <div>
+                                    Route: <p>Route ID: <strong>{booking.route._id}</strong></p>
+                                    <p>Origin: <strong>{booking.route.origin}</strong></p>
+                                    <p>Destination: <strong>{booking.route.destination}</strong></p>
+                                    <p>Departure Time: <strong>{booking.route.departureTime}</strong></p>
+                                    <p>Available Seats: <strong>{booking.route.availableSeats}</strong></p>
+                                </div>
+                            ): (
+                                <p>No route found for this booking.</p>
+                            )}
                         </li>
                     ))}
                 </div>
