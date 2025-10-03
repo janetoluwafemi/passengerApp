@@ -30,7 +30,8 @@ export const POST = async (request: Request) => {
                 const stringRemainingAvailableSeats = remainingAvailableSeats.toString()
                 console.log(stringRemainingAvailableSeats)
                 availableSeats = stringRemainingAvailableSeats
-                await routeId.save()
+                findAvailableSeats.availableSeats = availableSeats
+                await findAvailableSeats.save()
                 await booking.save()
                 if(availableSeats === "0"){
                     return new NextResponse(JSON.stringify({
