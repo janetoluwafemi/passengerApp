@@ -16,11 +16,34 @@ export const POST = async (request: Request) => {
         const passenger = await Passenger.find({})
         if (passenger) {
             const booking = new Booking(body)
-            await booking.save()
-            return new NextResponse(JSON.stringify({
-                message: "Passenger successfully booked a seat",
-                booking,
-            }))
+            const trimmedRouteId = body.routeId.trim()
+            const routeId = await Route.findById(trimmedRouteId)
+            if (routeId) {
+                console.log(routeId)
+                const findAvailableSeats = await Route.findById(routeId)
+                console.log(findAvailableSeats)
+                const availableSeats = findAvailableSeats.availableSeats
+                console.log(availableSeats)
+                const intAvailableSeats = parseInt(availableSeats)
+                console.log(intAvailableSeats)
+                const remainingAvailableSeats = intAvailableSeats - 1
+                const stringRemainingAvailableSeats = remainingAvailableSeats.toString()
+                if(stringRemainingAvailableSeats === "0"){
+                    return new NextResponse(JSON.stringify({
+                        message: "No available seats left",
+                    }))
+                }
+                await booking.save()
+                return new NextResponse(JSON.stringify({
+                    message: "Passenger successfully booked a seat",
+                    booking,
+                }))
+            }
+            else {
+                return new NextResponse(JSON.stringify({
+                    message: "Route doesn't exist",
+                }))
+            }
         }
         else {
             return new NextResponse(JSON.stringify({
