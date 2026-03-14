@@ -1,8 +1,7 @@
-import connect from '@/lib/db'
 import Passenger from '@/lib/model/passenger'
 import { NextResponse } from 'next/server'
 
-
+import { connectDB } from '@/lib/db';
 interface passengerRequest {
     passengerName: string
     email: string
@@ -10,7 +9,7 @@ interface passengerRequest {
 export const POST = async (request: Request) => {
     try {
         const body: passengerRequest = await request.json()
-        await connect()
+        await connectDB()
         const passenger = await Passenger.findOne({ email: body.email });
         if (passenger) {
             return new NextResponse(JSON.stringify({

@@ -1,28 +1,19 @@
-import mongoose from "mongoose"
-import dotenv from "dotenv"
-dotenv.config()
+import mongoose from 'mongoose';
 
-const MONGO_URL = process.env.MONGO_URL
-console.log("Mongo URL:", process.env.MONGO_URL);
+const MONGO_URL = process.env.MONGO_URL;
 
-const connectDB = async () => {
-    const connectionDB = mongoose.connection.readyState
-    if (connectionDB === 1) {
-        console.log("Already connected to database")
-    }
-    if (connectionDB === 2) {
-        console.log("Connecting to database...")
-    }
+export const connectDB = async () => {
+    if (mongoose.connection.readyState >= 1) return;
+
     try {
         await mongoose.connect(MONGO_URL!, {
             dbName: "passengersApp",
-            bufferCommands: true
-        })
-        console.log("Connected to database")
+            bufferCommands: false,
+            serverSelectionTimeoutMS: 15000,
+        });
+        console.log("MongoDB Connected ✅");
+    } catch (error) {
+        console.error("MongoDB Connection Error ❌:", error);
+        throw error;
     }
-    catch (error) {
-        console.log(error)
-    }
-}
-
-export default connectDB
+};

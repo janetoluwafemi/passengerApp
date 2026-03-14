@@ -1,4 +1,4 @@
-import connect from '@/lib/db'
+import { connectDB } from '@/lib/db';
 import Route from '@/lib/model/route'
 import { NextResponse } from 'next/server'
 import route from "@/lib/model/route";
@@ -12,7 +12,7 @@ interface RouteRequest {
 }
 export const POST = async (request: Request) => {
     try {
-        await connect()
+        await connectDB()
         const savedRoute =  await Route.findOne({origin: "", destination: ""})
         if (savedRoute) {
             return new NextResponse(JSON.stringify({
@@ -43,7 +43,7 @@ export const POST = async (request: Request) => {
 
 export const GET = async () => {
     try {
-        await connect()
+        await connectDB()
         const routes = await Route.find({})
         return new NextResponse(JSON.stringify({
             routes

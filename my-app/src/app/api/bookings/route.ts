@@ -1,4 +1,4 @@
-import connect from '@/lib/db'
+import { connectDB } from '@/lib/db';
 import Booking from '@/lib/model/booking'
 import Passenger from '@/lib/model/passenger'
 import { NextResponse } from 'next/server'
@@ -12,7 +12,7 @@ export const POST = async (request: Request) => {
     try{
         const body: BookingRequest = await request.json()
         console.log(body)
-        await connect()
+        await connectDB()
         const passenger = await Passenger.find({})
         if (passenger) {
             const booking = new Booking(body)
@@ -66,7 +66,7 @@ export const POST = async (request: Request) => {
 
 export const GET = async () => {
     try {
-        await connect()
+        await connectDB()
         const bookings = await Booking.find({})
         const allBookings = await Promise.all(
             bookings.map(async (booking) => {

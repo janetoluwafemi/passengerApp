@@ -46,7 +46,7 @@ const CreateRoute = () => {
                 alert("Please fill in all required fields: origin, destination, and available seats.")
                 return
             }
-            const response = await fetch('/api/auth/route', {
+            const response = await fetch('/api/route', {
                 body: JSON.stringify(formData),
                 method: 'POST',
                 headers: {'content-type': 'application/json'
@@ -63,53 +63,95 @@ const CreateRoute = () => {
         }
     }
     return (
-        <div className="flex justify-center items-center w-full h-screen flex-col gap-5">
-            <div className="text-xl font-bold text-center mb-7">Create Routes For Passengers</div>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div>
-                    <label>Origin: </label>
-                    <input type="text" placeholder="Origin" required={ true } value={formData.origin}
-                           onChange={(e) => {
-                               setFormData({...formData, origin: e.target.value})
-                           }}
-                           onInvalid={() => console.log("Origin Is Required")} className="border border-white"
-                    ></input>
+        <div className="flex justify-center items-center w-full min-h-screen flex-col gap-5 bg-gradient-to-br
+         from-blue-50 to-blue-100 px-4">
+            <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+                <div className="text-2xl font-bold text-gray-800 text-center mb-7">
+                    Create Routes For Passengers
                 </div>
-                <div>
-                    <label>Destination: </label>
-                    <input type="text" placeholder="Destination" required={ true } value={formData.destination}
-                           onChange={(e) => {
-                                setFormData({...formData, destination: e.target.value})
-                           }}
-                           onInvalid={() => console.log("Destination Is Required")} className="border border-white"
-                    />
-                </div>
-                <div>
-                    <label>Departure Time: </label>
-                    <input type="datetime-local" placeholder="Departure Time" required={ true }
-                           onInvalid={() => console.log("Departure Time Is Required")}
-                           value={formattedDate}
-                           className="border border-white" onChange={(e) => setFormattedDate(e.target.value)}
-                    ></input>
-                </div>
-                <div>
-                    <label>Available Seats: </label>
-                    <input type="text" placeholder="Available Seats" required={ true } value={formData.availableSeats}
-                           onChange={(e) => {
-                                setFormData({...formData, availableSeats: e.target.value})
-                           }}
-                           onInvalid={() => console.log("Available Seats Is Required")} className="border border-white"
-                    />
-                </div>
-                <div className="flex justify-center text-center flex-row gap-3">
-                    <div className="bg-amber-100 w-1/3">
-                        <button className="text-black" onClick={() => router.back()}>Back</button>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                    <div className="flex flex-col gap-2">
+                        <label className="text-gray-700 font-medium">Origin</label>
+                        <input
+                            type="text"
+                            placeholder="Origin"
+                            required={true}
+                            value={formData.origin}
+                            onChange={(e) => {
+                                setFormData({ ...formData, origin: e.target.value })
+                            }}
+                            onInvalid={() => console.log("Origin Is Required")}
+                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                             focus:ring-blue-500"
+                        />
                     </div>
-                    <div className="bg-white w-1/3">
-                        <button type="submit" className="text-black">Submit</button>
+                    <div className="flex flex-col gap-2">
+                        <label className="text-gray-700 font-medium">Destination</label>
+                        <input
+                            type="text"
+                            placeholder="Destination"
+                            required={true}
+                            value={formData.destination}
+                            onChange={(e) => {
+                                setFormData({ ...formData, destination: e.target.value })
+                            }}
+                            onInvalid={() => console.log("Destination Is Required")}
+                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                            focus:ring-blue-500"
+                        />
                     </div>
-                </div>
-            </form>
+                    <div className="flex flex-col gap-2">
+                        <label className="text-gray-700 font-medium">Departure Time</label>
+
+                        <input
+                            type="datetime-local"
+                            placeholder="Departure Time"
+                            required={true}
+                            value={formattedDate}
+                            onInvalid={() => console.log("Departure Time Is Required")}
+                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                             focus:ring-blue-500"
+                            onChange={(e) => setFormattedDate(e.target.value)}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <label className="text-gray-700 font-medium">Available Seats</label>
+                        <input
+                            type="text"
+                            placeholder="Available Seats"
+                            required={true}
+                            value={formData.availableSeats}
+                            onChange={(e) => {
+                                setFormData({ ...formData, availableSeats: e.target.value })
+                            }}
+                            onInvalid={() => console.log("Available Seats Is Required")}
+                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none
+                            focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    <div className="flex justify-center text-center flex-row gap-4 mt-4">
+                        <div className="w-1/2">
+                            <button
+                                type="button"
+                                className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300
+                                 transition"
+                                onClick={() => router.back()}
+                            >
+                                Back
+                            </button>
+                        </div>
+                        <div className="w-1/2">
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-900 text-white py-2 rounded-lg hover:bg-blue-700
+                                 transition shadow"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
