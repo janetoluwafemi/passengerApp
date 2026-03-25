@@ -62,7 +62,7 @@ const MakeBooking = () => {
                                     passengerName: e.target.value
                                 }))
                             }}
-                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                            className="border text-black border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
                              focus:ring-blue-500"
                         />
                     </div>

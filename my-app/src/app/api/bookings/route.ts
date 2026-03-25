@@ -16,7 +16,9 @@ export const POST = async (request: Request) => {
         const passenger = await Passenger.find({})
         if (passenger) {
             const booking = new Booking(body)
+            console.log(booking)
             const trimmedRouteId = body.routeId.trim()
+            console.log(trimmedRouteId)
             const routeId = await Route.findById(trimmedRouteId)
             if (routeId) {
                 console.log(routeId)

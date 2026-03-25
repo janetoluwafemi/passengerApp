@@ -32,8 +32,7 @@ export const POST = async (request: Request) => {
             Routes_id: routes.id,
             message: "Route created successfully"
         }))
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error, "Error Trying To Create Route")
         return new NextResponse(JSON.stringify({
             message: "Error Trying To Create Route"
@@ -48,8 +47,7 @@ export const GET = async () => {
         return new NextResponse(JSON.stringify({
             routes
         }))
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error, "Error Trying To Get Routes")
         return new NextResponse(JSON.stringify({
             message: "Error Trying To Get Routes"

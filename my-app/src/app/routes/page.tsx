@@ -56,6 +56,7 @@ const CreateRoute = () => {
             const responseJson = await response.json()
             console.log(responseJson)
             alert(responseJson.message)
+            router.push('/showRoutes')
         }
         catch (error) {
             console.log(error, "Error creating Route")
@@ -81,7 +82,7 @@ const CreateRoute = () => {
                                 setFormData({ ...formData, origin: e.target.value })
                             }}
                             onInvalid={() => console.log("Origin Is Required")}
-                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                            className="border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none focus:ring-2
                              focus:ring-blue-500"
                         />
                     </div>
@@ -96,7 +97,7 @@ const CreateRoute = () => {
                                 setFormData({ ...formData, destination: e.target.value })
                             }}
                             onInvalid={() => console.log("Destination Is Required")}
-                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                            className="border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none focus:ring-2
                             focus:ring-blue-500"
                         />
                     </div>
@@ -109,7 +110,7 @@ const CreateRoute = () => {
                             required={true}
                             value={formattedDate}
                             onInvalid={() => console.log("Departure Time Is Required")}
-                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2
+                            className="border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none focus:ring-2
                              focus:ring-blue-500"
                             onChange={(e) => setFormattedDate(e.target.value)}
                         />
@@ -125,7 +126,7 @@ const CreateRoute = () => {
                                 setFormData({ ...formData, availableSeats: e.target.value })
                             }}
                             onInvalid={() => console.log("Available Seats Is Required")}
-                            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none
+                            className="border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none
                             focus:ring-2 focus:ring-blue-500"
                         />
                     </div>

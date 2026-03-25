@@ -20,7 +20,7 @@ const CreatePassenger = () => {
             })
             const responseJson = await response.json()
             alert(responseJson.message)
-            router.push('/showRoutes')
+            router.push('/routes')
         } catch (error) {
             console.log(error)
         }
@@ -77,6 +77,7 @@ const CreatePassenger = () => {
                         <div className="w-1/2">
                             <button
                                 type="button"
+                                onClick={() => router.back()}
                                 className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300
                                  transition"
                             >
