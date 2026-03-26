@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Users, Route, Ticket, ClipboardList, ArrowRight, ShieldCheck } from "lucide-react"
 import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
+import React from "react";
 
 interface BookingRowProps {
     name: string,
@@ -17,8 +18,8 @@ interface ActionCardProps {
     title: string,
     desc: string,
     color: string,
-    icon: string,
-    onClick: string
+    icon: React.ReactNode;
+    onClick: () => void;
 }
 export default function Home() {
     const router = useRouter()
