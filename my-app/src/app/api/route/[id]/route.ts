@@ -4,7 +4,7 @@ import Route from "@/lib/model/route";
 
 export const GET = async (_request: Request, { params }: { params: { id: string } }) => {
     try {
-        const { id } = params;
+        const { id } = await params;
 
         await connectDB();
         const route = await Route.findById(id);

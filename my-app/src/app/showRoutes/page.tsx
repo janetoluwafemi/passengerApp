@@ -41,7 +41,8 @@ const ShowRoutes = () => {
         getAllRoutes()
     }, [])
     return (
-        <div className="w-full min-h-screen flex flex-col items-center p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="w-full min-h-screen flex flex-col items-center p-6 bg-gradient-to-br from-blue-50
+         to-blue-100">
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -73,7 +74,8 @@ const ShowRoutes = () => {
                                     visible: { opacity: 1, y: 0 }
                                 }}
                                 whileHover={{ scale: 1.02 }}
-                                className="list-none bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition-shadow duration-300"
+                                className="list-none bg-white shadow-lg rounded-xl p-6 hover:shadow-xl
+                                transition-shadow duration-300"
                             >
                                 <p className="text-gray-700 mb-1">
                                     Origin: <strong>{route.origin}</strong>
@@ -91,7 +93,8 @@ const ShowRoutes = () => {
                                     <motion.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => handleOnClick(route._id)}
-                                        className="w-full bg-blue-900 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors shadow"
+                                        className="w-full bg-blue-900 text-white py-2 rounded-lg
+                                        hover:bg-blue-700 transition-colors shadow"
                                     >
                                         Show Route
                                     </motion.button>
