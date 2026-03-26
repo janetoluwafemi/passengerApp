@@ -2,9 +2,13 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Route from "@/lib/model/route";
 
-export const GET = async (_request: Request, { params }: { params: { id: string } }) => {
+export const GET = async (
+    _request: Request,
+    context: { params: Promise<{ id: string }> }
+) => {
     try {
-        const { id } = await params;
+        const params = await context.params;
+        const { id } = params;
 
         await connectDB();
         const route = await Route.findById(id);
